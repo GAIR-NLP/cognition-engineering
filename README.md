@@ -2,6 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/99876536-b2d3-450a-86e6-e26d726380a9)
 
+(Note: Thanks for your interest! The draft will be released in one week.)
 
 This repository presents a collection of papers and resources related to **Test Time Scaling**. For deeper understanding of these works, please refers to our position paper [**Generative AI Act II: Test Time Scaling Drives Cognition Engineering**](). Please let us know if you find out a mistake or have any suggestions by e-mail: shijiexia@sjtu.edu.cn
 
