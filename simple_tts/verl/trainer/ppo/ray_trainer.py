@@ -15,7 +15,7 @@
 FSDP PPO Trainer with Ray-based single controller.
 This trainer supports model-agonistic model initialization with huggingface
 """
-
+import pdb
 import os
 import uuid
 from contextlib import contextmanager
@@ -506,20 +506,16 @@ class RayPPOTrainer(object):
         self.validation_generations_logger.log(self.config.trainer.logger, samples, self.global_steps)
 
     def _validate(self):
+        reward_tensor_lst = []
         data_source_lst = []
-        reward_extra_infos_dict: dict[str, list] = defaultdict(list)
 
         # Lists to collect samples for the table
         sample_inputs = []
         sample_outputs = []
         sample_scores = []
-
+        sample_lengths = []
         for test_data in self.val_dataloader:
             test_batch = DataProto.from_single_dict(test_data)
-
-            # repeat test batch
-            test_batch = test_batch.repeat(repeat_times=self.config.actor_rollout_ref.rollout.val_kwargs.n,
-                                           interleave=True)
 
             # we only do validation on rule-based rm
             if self.config.reward_model.enable and test_batch[0].non_tensor_batch['reward_model']['style'] == 'model':
@@ -527,7 +523,6 @@ class RayPPOTrainer(object):
 
             # Store original inputs
             input_ids = test_batch.batch['input_ids']
-            # TODO: Can we keep special tokens except for padding tokens?
             input_texts = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in input_ids]
             sample_inputs.extend(input_texts)
 
@@ -546,15 +541,14 @@ class RayPPOTrainer(object):
                 'eos_token_id': self.tokenizer.eos_token_id,
                 'pad_token_id': self.tokenizer.pad_token_id,
                 'recompute_log_prob': False,
-                'do_sample': self.config.actor_rollout_ref.rollout.val_kwargs.do_sample,
+                'do_sample': False,
                 'validate': True,
             }
-            print(f'test_gen_batch meta info: {test_gen_batch.meta_info}')
 
             # pad to be divisible by dp_size
             test_gen_batch_padded, pad_size = pad_dataproto_to_divisor(test_gen_batch, self.actor_rollout_wg.world_size)
+            test_gen_batch_padded.meta_info['step']=self.global_steps
             test_output_gen_batch_padded = self.actor_rollout_wg.generate_sequences(test_gen_batch_padded)
-
             # unpad
             test_output_gen_batch = unpad_dataproto(test_output_gen_batch_padded, pad_size=pad_size)
             print('validation generation end')
@@ -563,44 +557,50 @@ class RayPPOTrainer(object):
             output_ids = test_output_gen_batch.batch['responses']
             output_texts = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in output_ids]
             sample_outputs.extend(output_texts)
+            sample_lengths.extend((~torch.isin(output_ids, torch.tensor(self.tokenizer.pad_token_id, device=output_ids.device))).sum(-1).tolist())
 
             test_batch = test_batch.union(test_output_gen_batch)
 
             # evaluate using reward_function
-            result = self.val_reward_fn(test_batch, return_dict=True)
-            reward_tensor = result["reward_tensor"]
+            reward_tensor = self.val_reward_fn(test_batch)
+            reward_tensor = torch.where((reward_tensor <= 0.0), torch.tensor(0.0), reward_tensor) 
+            test_batch.batch['token_level_scores']=reward_tensor
+
+            # Store scores
             scores = reward_tensor.sum(-1).cpu().tolist()
             sample_scores.extend(scores)
-            if "reward_extra_info" in result:
-                reward_extra_infos_dict["final_reward"].extend(scores)
-                for key, lst in result["reward_extra_info"].items():
-                    reward_extra_infos_dict[key].extend(lst)
 
+            reward_tensor_lst.append(reward_tensor)
             data_source_lst.append(test_batch.non_tensor_batch.get('data_source', ['unknown'] * reward_tensor.shape[0]))
 
         self._maybe_log_val_generations(inputs=sample_inputs, outputs=sample_outputs, scores=sample_scores)
 
-        for lst in reward_extra_infos_dict.values():
-            assert len(lst) == 0 or len(lst) == len(sample_scores)
-
+        reward_tensor = torch.cat(reward_tensor_lst, dim=0).sum(-1).cpu()  # (batch_size,)
         data_sources = np.concatenate(data_source_lst, axis=0)
 
-        data_src2var2metric2val = process_validation_metrics(data_sources, sample_inputs, reward_extra_infos_dict)
+        # evaluate test_score based on data source
+        data_source_reward = {}
+        data_source_length = {}
+        for i in range(reward_tensor.shape[0]):
+            data_source = data_sources[i]
+            if data_source not in data_source_reward:
+                data_source_reward[data_source] = []
+                data_source_length[data_source] = []
+            data_source_reward[data_source].append(reward_tensor[i].item())
+            data_source_length[data_source].append(sample_lengths[i])
 
         metric_dict = {}
-        for data_source, var2metric2val in data_src2var2metric2val.items():
-            core_var = "acc" if "acc" in var2metric2val else "final_reward"
-            for var_name, metric2val in var2metric2val.items():
-                n_max = max([int(name.split("@")[-1].split("/")[0]) for name in metric2val.keys()])
-                for metric_name, metric_val in metric2val.items():
-                    if var_name == core_var and any(
-                            metric_name.startswith(pfx)
-                            for pfx in ["mean", "std", "maj", "best"]) and f"@{n_max}/" in metric_name:
-                        metric_sec = "val-core"
-                    else:
-                        metric_sec = "val-aux"
-                    pfx = f"{metric_sec}/{data_source}/{var_name}/{metric_name}"
-                    metric_dict[pfx] = metric_val
+        average_acc=[]
+        for data_source, rewards in data_source_reward.items():
+            metric_dict[f'val/test_score/{data_source}'] = np.mean(rewards)
+            average_acc.append(np.mean(rewards))
+        metric_dict[f'val/test_score/avg_acc'] = np.mean(average_acc)
+
+        for data_source, lengths in data_source_length.items():
+            metric_dict[f'val_response_length/test_length/{data_source}'] = np.mean(lengths)
+            rewards=data_source_reward[data_source]
+            if np.mean(rewards)==0: continue
+            metric_dict[f'val_response_length/test_length_correct/{data_source}'] = sum([lengths[i] for i in range(len(lengths)) if rewards[i]==1.0])/sum(rewards)
 
         return metric_dict
 
