@@ -232,7 +232,6 @@ def compute_policy_loss(old_log_prob, log_prob, advantages, eos_mask, cliprange)
 - **Masked Mean**: Applies token-level masks to ensure proper averaging.
 - **Output**: Returns loss value, clipping ratio, and KL for logging.
 
-## Acknowledge
-```
+## Acknowledgment
+
 This tutorial is based on veRL and uses Qwen as the base model, along with NuminaMATH, MATH, and DeepScaleR as training datasets. We sincerely thank the contributors for open-sourcing their work, which made this tutorial possible.
-```
