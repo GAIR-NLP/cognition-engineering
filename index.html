@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Generative AI Act II:
+        Test Time Scaling Drives Cognition Engineering">
+  <meta name="keywords" content="LLMs, Test-time-scaling">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generative AI Act II: Test Time Scaling Drives Cognition Engineering</title>
+
+  <meta name="google-site-verification" content="znmXGhgPNWAot08r5inlpnFXRaMlxl0b9QSCf882xGY" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/animation.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/GAIR-NLP/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://gair-nlp.github.io/abel">
+            Abel
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/MathPile/">
+            MathPile
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/ReAlign/">
+            ReAlign
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/OlympicArena/">
+            OlympicArena
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/anole/">
+            Anole
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/ProX/">
+            ProX
+          </a>
+          <a class="navbar-item" href="https://gair-nlp.github.io/PC-Agent/">
+            PC Agent
+          </a>    
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Generative AI Act II: Test Time Scaling Drives Cognition Engineering</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://shijie-xia.github.io/">Shijie Xia</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://qinyiwei.github.io/">Yiwei Qin</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=DDRBbxgAAAAJ">Xuefeng Li</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://yanmaaaa.github.io/">Yan Ma</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://github.com/RZFan525">Run-Ze Fan</a><sup>3</sup>,</span>
+            <br>
+            <span class="author-block"><a href="https://steffichern.github.io/">Steffi Chern</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=btPmUcoAAAAJ">Haoyang Zou</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://koalazf99.github.io/">Fan Zhou</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=_-0MpawAAAAJ">Xiangkun Hu</a><sup>2,3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=OP1X8EYAAAAJ">Jiahe Jin</a><sup>1,2,3</sup>,</span>
+            <br>
+            <span class="author-block"><a href="https://henryhe0123.github.io/">Yanheng He</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://bleaves.github.io/">Yixin Ye</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=HKUoOq0AAAAJ">Yixiu Liu</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="http://pfliu.com/">Pengfei Liu</a><sup>1,2,3+</sup></span>
+        </div>
+        
+        <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,</span>
+            <span class="author-block"><sup>2</sup>SII,</span>
+            <br>
+            <span class="author-block"><sup>3</sup>Generative AI Research Lab (GAIR)</span>
+            <span class="author-block"><sup>+</sup>Corresponding author</span>
+        </div>
+
+        
+
+        <div class="column has-text-centered">
+          <div class="publication-links">
+            <!-- PDF Link. -->
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2504.13828" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/GAIR-NLP/cognition-engineering" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+            </span>
+            <!-- Dataset Link. -->
+            <!-- <span class="link-block">
+              <a href="https://huggingface.co/GAIR/Anole-7b-v0.1" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <p style="font-size:18px">🤗</p>
+                </span>
+                <span>Model</span>
+              </a>
+            </span> -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <img src="static/images/act2.png" width=100%/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h3 class="title is-3">Abstract</h3>
+          <div class="content has-text-justified">
+            <p>
+              The first generation of Large Language Models—what might be called ''Act I" of generative AI (2020-2023)—achieved remarkable success through massive parameter and data scaling, 
+              yet exhibited fundamental limitations in knowledge latency, shallow reasoning, and constrained cognitive processes.
+              During this era, prompt engineering emerged as our primary interface with AI, enabling dialogue-level communication through natural language. 
+              We now witness the emergence of ''<strong>Act II</strong>" (2024-present), where models are transitioning from knowledge-retrieval systems (in latent space) to thought-construction engines through test-time scaling techniques. This new paradigm establishes a mind-level connection with AI through language-based thoughts.
+              In this paper, we clarify the conceptual foundations of <strong>cognition engineering</strong> and explain why this moment is critical for its development. We systematically break down these advanced approaches through comprehensive tutorials and optimized implementations, democratizing access to cognition engineering and enabling every practitioner to participate in 
+              AI's second act. We provide a regularly updated collection of papers on test-time scaling in the <a href="https://github.com/GAIR-NLP/cognition-engineering">GitHub Repository</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Three Scaling Phases</h3>
+      <br> <!-- 空行 -->
+      
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/three_scaling_laws.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%;">
+          <p class="has-text-centered"><b>The three scaling phases illustrated as a progression of knowledge representation. 
+            Pre-training scaling (blue) forms isolated knowledge islands with fundamental physics concepts connected by limited innate associations.
+             Post-training scaling (green) densifies these islands with more sophisticated learned connections between related concepts. 
+            Test-time scaling (red) enables dynamic reasoning pathway formation between previously disconnected concepts through extended computation, facilitating multi-hop inference across the entire knowledge space. 
+            <strong>Test-time scaling builds bridges between knowledge islands, connecting distant nodes that remain isolated during pre-training and conventional post-training.</strong></b></p>
+        </div>
+      </div>
+      
+
+     
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">The Practitioner’s Roadmap: How to Apply Test-Time Scaling to your Applications?</h3>
+      <br> <!-- 空行 -->
+      
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/workflow_tts.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%;">
+          <p class="has-text-centered"><b>Workflow for applying test-time scaling in a specific domain. For more details, please refer to the main
+            paper.</b></p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Methods to improve scaling efficiency of test-time scaling approaches</h3>
+      <br> <!-- 空行 -->
+      
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/improve_scaling_efficiency.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%;">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Works and methodologies for applying RL to elicit long CoT abilities</h3>
+      <br> <!-- 空行 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/work_rl_scaling.png" alt="Methodologies for applying RL to elicit long CoT abilities." style="width: 100%;">
+        </div>
+      </div>
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/recipe_rl.png" alt="Works for applying RL to elicit long CoT abilities." style="width: 100%;">
+        </div>
+      </div>
+      
+
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Long CoT resources across different domains</h3>
+      <br> <!-- 空行 -->
+      
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/long_cot_resource.png" alt="Works for applying RL to elicit long CoT abilities." style="width: 100%;">
+        </div>
+      </div>
+      
+
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Works applying test-time scaling across various domains</h3>
+      <br> <!-- 空行 -->
+      
+
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/application.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%;">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">A hands-on tutorial applying RL to unlock long CoT abilities</h3>
+      <br> <!-- 空行 -->
+      
+      <!-- 第一行: 一整幅图 -->
+      <div class="video-row" style="display: flex; justify-content: center;">
+        <div class="video-item" style="width: 80%;">
+          <img src="static/images/tutorial.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%;">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">More in the paper!</h3>
+    <br>
+    
+    <!-- 图片轮播容器 -->
+    <div class="carousel-container" style="position: relative; max-width: 800px; margin: 0 auto;">
+      <!-- 轮播图片 -->
+      <div class="carousel-slides">
+        <div class="carousel-slide active">
+          <img src="static/images/comparison_tts.png" alt="The Evolution of AI Engineering Paradigms" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Comparisons of different test time scaling methods.</b></p> -->
+        </div>
+        <div class="carousel-slide">
+          <img src="static/images/ensemble_tts.png" alt="The DIKW Pyramid" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Ensemble of Test-Time Scaling Methods.</b></p> -->
+        </div>
+        <div class="carousel-slide">
+          <img src="static/images/rl_algorithm.png" alt="Three Scaling Laws" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Comparisons of different training algorithms.</b></p> -->
+        </div>
+        <div class="carousel-slide">
+          <img src="static/images/reward_model.png" alt="Workflow for test-time scaling" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Comparisons of different reward types. </b></p> -->
+        </div>
+        <div class="carousel-slide">
+          <img src="static/images/tree_search.png" alt="Summary of Scaling RL" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Illustration of key components of tree search.</b></p> -->
+        </div>
+        <div class="carousel-slide">
+          <img src="static/images/multi-turn_correction.png" alt="Summary of Scaling RL" style="width: 100%; height: auto;">
+          <!-- <p class="has-text-centered" style="margin-top: 10px;"><b>Illustration of key components of multi-turn correction.</b></p> -->
+        </div>
+      </div>
+      
+      <!-- 导航箭头 -->
+      <a class="carousel-control prev" style="position: absolute; left: -5px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; padding: 10px; border-radius: 5px; cursor: pointer;">❮</a>
+      <a class="carousel-control next" style="position: absolute; right: -5px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; padding: 10px; border-radius: 5px; cursor: pointer;">❯</a>
+      
+      <!-- 指示点 -->
+      <div class="carousel-dots" style="text-align: center; margin-top: 15px;">
+        <span class="dot active" data-index="0" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" data-index="1" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" data-index="2" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" data-index="3" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" data-index="4" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" data-index="5" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CSS样式 - 添加到<head>部分或者创建一个单独的样式文件 -->
+<style>
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-slides {
+    position: relative;
+    height: 500px; /* 固定高度，可以根据需要调整 */
+  }
+  
+  .carousel-slide {
+    display: none;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .carousel-slide.active {
+    display: block;
+  }
+  
+  .carousel-slide img {
+    max-height: 450px; /* 确保图片不会太高，给标题留空间 */
+    object-fit: contain; /* 保持图片比例 */
+  }
+  
+  .dot.active {
+    background-color: #717171;
+  }
+</style>
+
+<!-- JavaScript代码 - 添加到页面底部或者$(document).ready中 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取元素
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.querySelector('.carousel-control.prev');
+    const nextBtn = document.querySelector('.carousel-control.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    
+    let currentIndex = 0;
+    
+    // 更新轮播显示
+    function showSlide(index) {
+      // 隐藏所有幻灯片
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      
+      // 移除所有点的active状态
+      document.querySelectorAll('.dot').forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // 显示当前幻灯片和点
+      slides[index].classList.add('active');
+      document.querySelector(`.dot[data-index="${index}"]`).classList.add('active');
+      
+      currentIndex = index;
+    }
+    
+    // 下一张幻灯片
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    // 上一张幻灯片
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    // 事件监听器
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // 点击指示点切换幻灯片
+    dotsContainer.addEventListener('click', function(e) {
+      if (e.target.classList.contains('dot')) {
+        const index = parseInt(e.target.getAttribute('data-index'));
+        showSlide(index);
+      }
+    });
+    
+    // 初始显示第一张幻灯片
+    showSlide(0);
+  });
+</script>
+
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Contact. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">📬 Contact</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you have any questions regarding the paper, feel free to directly submit a <a href="https://github.com/Shijie-Xia/CognitionEngineering">github issue</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{xia2025generativeaiactii,
+      title={Generative AI Act II: Test Time Scaling Drives Cognition Engineering}, 
+      author={Shijie Xia and Yiwei Qin and Xuefeng Li and Yan Ma and Run-Ze Fan and Steffi Chern and Haoyang Zou and Fan Zhou and Xiangkun Hu and Jiahe Jin and Yanheng He and Yixin Ye and Yixiu Liu and Pengfei Liu},
+      year={2025},
+      eprint={2504.13828},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.13828}, 
+}
+ </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer centered-footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<style>
+  .hidden {
+      display: none;
+  }
+  .sortable:hover {
+      cursor: pointer;
+  }
+  .asc::after {
+      content: ' ↑';
+  }
+  .desc::after {
+      content: ' ↓';
+  }
+  #toggleButton {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    color: #555555;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition-duration: 0.4s;
+  }
+
+  #toggleButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* 鼠标悬停时的阴影效果 */
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  th {
+      background-color: #f2f2f2;
+      border-bottom: 2px solid #ddd;
+  }
+
+  td:hover {background-color: #ffffff;}
+  
+  .medal-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .ranking-icon {
+    width: 40px;
+    height: 20px;
+  }
+  .header-cell {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .header-row th{
+    background-color: #fff9c4;
+  }
+  .columns {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .column {
+    flex: 1;
+    min-width: 100%;
+  }
+
+  table {
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .centered-footer {
+    text-align: center;
+  }
+
+
+
+</style>
+
+
+
+
+</body>
+</html>

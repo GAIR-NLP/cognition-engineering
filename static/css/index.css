@@ -1,0 +1,284 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #C972FF, #7D74F3 50%, #40E0EB); /* Lighter gradient colors */
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 16px; /* Smaller font size */
+  justify-content: center;
+  line-height: 1em;
+  min-width: 120px; /* Smaller width */
+  padding: 2px; /* Less padding */
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(235, 235, 245); /* Lighter background color for the text span */
+  color: #333; /* Darker text color for better contrast */
+  padding: 12px 18px; /* Adjust padding for smaller size */
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: rgba(235, 235, 245, 0.5); /* Even lighter on hover */
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 20px; /* Adjust font size for larger screens */
+    min-width: 140px; /* Adjust minimum width for larger screens */
+  }
+}
+
+/* 移除列的内边距 */
+.columns.is-gapless .column {
+  padding: 0;
+}
+
+/* 视频容器样式 */
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 视频样式，确保自适应宽度且保持比例 */
+.video-container video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 文字样式，确保与视频对齐 */
+.video-container p {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* 全局设置 box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 设置 video-row 使用 Flexbox */
+.video-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px; /* 调整行间距 */
+  flex-wrap: wrap; /* 允许换行 */
+}
+
+/* 设置每个 video-item 占据 48% 宽度，留出间隙 */
+.video-item {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px; /* 保证在换行时有间距 */
+}
+
+/* 设置 video 自适应填充 */
+.video-item video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 文字样式 */
+.video-item p {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;  /* 调小字体大小 */
+}
+
+/* 小屏幕下，每行一个视频 */
+@media screen and (max-width: 768px) {
+  .video-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-item {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
