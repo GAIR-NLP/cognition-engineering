@@ -8,7 +8,7 @@
 
 📄 <a href="http://arxiv.org/abs/2504.13828" target="_blank">English Paper</a> &nbsp;|&nbsp;
 📄 <a href="./assets/Cognition_Engineering_zh.pdf" target="_blank">Chinese Paper</a> &nbsp;|&nbsp;
-🌐 <a href="https://shijie-xia.github.io/CognitionEngineering/" target="_blank">Website</a> &nbsp;|&nbsp;
+🌐 <a href="https://gair-nlp.github.io/cognition-engineering/" target="_blank">Website</a> &nbsp;|&nbsp;
 💡 <a href="#our-vision" target="_blank">Vision</a> &nbsp;|&nbsp;
 📖 <a href="#recipestricks-for-rl-scaling">Recipes for RL Scaling</a> &nbsp;|&nbsp;
 💻 <a href="#implementation-of-rl-scaling">Code Tutorial for RL Scaling</a> &nbsp;|&nbsp;
