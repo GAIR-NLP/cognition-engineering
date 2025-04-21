@@ -26,7 +26,9 @@ The first AI generation ("Act I", 2020-2023) scaled parameters and data impressi
 "Act II" (2024-present) transforms models from knowledge retrievers to thought constructors through test-time scaling, establishing mind-level AI connections.
 This work defines cognition engineering's foundations, provides tutorials and implementations, and democratizes access to AI's second paradigm.
 
+# 🔥 News
 
+- [2025-04-21] 🎉 🎉 🎉  We have released our paper *"Generative AI Act II: Test Time Scaling Drives Cognition Engineering"* along with all resources!
 
 # 👋 Is This Paper For You?
 
