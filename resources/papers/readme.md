@@ -481,6 +481,8 @@
 - AirRAG: Activating Intrinsic Reasoning for Retrieval Augmented Generation using Tree-based Search [[Paper]](https://arxiv.org/abs/2501.10053) ![](https://img.shields.io/badge/arXiv-2025.01-red)
 - Chain-of-Retrieval Augmented Generation [[Paper]](https://arxiv.org/abs/2501.14342) ![](https://img.shields.io/badge/arXiv-2025.01-red)
 - DeepRAG: Thinking to Retrieval Step by Step for Large Language Models [[Paper]](https://arxiv.org/abs/2502.01142) ![](https://img.shields.io/badge/arXiv-2025.02-red)
+- DeepRetrieval: Hacking Real Search Engines and Retrievers
+with Large Language Models via Reinforcement Learning [[Paper]](https://arxiv.org/pdf/2503.00223) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.05592) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.09516) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - ReSearch: Learning to Reason with Search for LLMs via Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.19470) ![](https://img.shields.io/badge/arXiv-2025.03-red)
@@ -548,6 +550,8 @@
 
 ### 5.2 Application: Search
 
+- DeepRetrieval: Hacking Real Search Engines and Retrievers
+with Large Language Models via Reinforcement Learning [[Paper]](https://arxiv.org/pdf/2503.00223) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.09516) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.05592) ![](https://img.shields.io/badge/arXiv-2025.03-red)
 - Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning [[Paper]](https://arxiv.org/abs/2503.09516) ![](https://img.shields.io/badge/arXiv-2025.03-red)
